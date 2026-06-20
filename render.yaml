@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: flagship-ai-suite-api
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn ai_suite.main:app --config gunicorn_conf.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: ENVIRONMENT
+        value: production
+      - key: AI_SUITE_MEMORY_SAFE_MODE
+        value: true
+      - key: AI_SUITE_MEMORY_DEBUG
+        value: false
+      - key: WEB_CONCURRENCY
+        value: 1
+      - key: GUNICORN_THREADS
+        value: 1
+      - key: GUNICORN_TIMEOUT
+        value: 120
+      - key: GUNICORN_MAX_REQUESTS
+        value: 80
+      - key: GUNICORN_MAX_REQUESTS_JITTER
+        value: 20
+      - key: MALLOC_TRIM_THRESHOLD_
+        value: 65536
+      - key: LOG_LEVEL
+        value: info
+      - key: SHIPGATE_LLM_PROVIDER
+        value: offline
+      - key: SHIPGATE_MAX_UPLOAD_MB
+        value: 25

@@ -1,0 +1,38 @@
+# env/secrets
+.env
+.env.*
+!.env.example
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# runtime data
+data/
+outputs/
+uploads/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+
+# node/frontend artifacts
+node_modules/
+.svelte-kit/
+.next/
+dist/
+build/
+.vercel/
+.netlify/
+
+# os/editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
